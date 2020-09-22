@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let qianXu = [1,2,4,7,3,5,6,8],
+            zhongXu = [4,7,2,1,5,3,8,6];
+        class TreeNode{
+            constructor(value){
+                this.value = value
+                this.left = null
+                this.right = null
+            }
+        }
+        function buildTree(qianXu,zhongXu){
+            if(qianXu[0]){
+                let rootVal = qianXu[0],
+                    index = zhongXu.indexOf(rootVal),
+                    leftTree = buildTree(qianXu.slice(1,index+1),zhongXu.slice(0,index)),
+                    rightTree = buildTree(qianXu.slice(index+1),zhongXu.slice(index+1)),
+                    root = new TreeNode(rootVal)
+                root.left = leftTree;
+                root.right = rightTree
+                return root
+            }
+        }
+        let ss = buildTree(qianXu,zhongXu)
+        console.log(ss)
+    </script>
+</body>
+</html>
