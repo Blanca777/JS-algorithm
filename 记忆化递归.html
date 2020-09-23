@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //一次可以跳一级，也可以跳二级，求跳上n级台阶总共有多少种跳法
+        let cache1 = [, 1, 2]
+        function jumpFloor1(n) {
+            if (cache1[n] !== undefined) return cache[n];
+            return cache1[n] = jumpFloor(n - 1) + jumpFloor(n - 2)
+        }
+        //这次可以一次跳n级
+        let cache2 = [, 1, 2]
+        function jumpFloor2(n) {
+            if (cache2[n] !== undefined) return cache[n];
+            cache2[n] = 1
+            for (let i = n - 1; i >= 1; i--) {
+                cache2[n] += jumpFloor2(i)
+            }
+            return cache2[n]
+        }
+    </script>
+</body>
+
+</html>
