@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class TreeNode {
+            constructor(val) {
+                this.val = val
+                this.left = null
+                this.right = null
+            }
+        }
+        function createTree_levelOrder(arr) {
+            let queue = []
+            let root = null
+            if (arr[0] !== undefined) {
+
+                let nodeVal = arr.shift()
+                root = new TreeNode(nodeVal)
+                queue.push(root)
+
+                while (queue.length) {
+                    let head = queue.shift()
+                    nodeVal = arr.shift()
+
+                    if (nodeVal != "#") {
+                        head.left = new TreeNode(nodeVal)
+                        queue.push(head.left)
+                    }
+
+                    nodeVal = arr.shift()
+                    if (nodeVal != "#") {
+                        head.right = new TreeNode(nodeVal)
+                        queue.push(head.right)
+                    }
+                }
+            }
+            return root
+        }
+        let arr = ['a', 'b', 'c', 'd', '#', '#', 'e', '#', 'f', '#', '#', '#', '#']
+        let ans = createTree_levelOrder(arr)
+        console.log(ans)
+    </script>
+</body>
+
+</html>
