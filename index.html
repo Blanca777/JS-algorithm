@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var longestPalindrome = function (s) {
+            let len = 0
+            for (let i in s) {
+                len++
+            }
+            if (len == 0 || len == 1) return s
+            for (let i = 0; i < len; i++) {
+                let head = s[i], ans = ""
+                for (let j = i + 1; j < len; j++) {
+                    if (head == s[j]) {
+                        ans = s.substring(i, j + 1)
+                    }
+                }
+                if (ans != "") {
+                    // console.log(ans.split(''))
+                    let ansarr = ans.split('')
+                    let arr1 = [],arr2=[]
+                    for (let i = 0; i < ansarr.length; i++) {
+                        arr1 = ansarr.pop()
+                        arr2 = ansarr.shift()
+                        if(arr1 != arr2){
+                            // console.log(arr1,arr2)
+                            return s[0]
+                        }
+                    }
+                    return ans
+                }
+            }
+            return s[0]
+
+        };
+        let tt = longestPalindrome("babad")
+        console.log(tt)
+    </script>
+</body>
+
+</html>
